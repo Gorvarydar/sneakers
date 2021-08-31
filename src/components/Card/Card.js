@@ -1,31 +1,41 @@
 import styles from "./Card.module.scss"
+import React from 'react'
+import {useEffect} from 'react'
 
 
-console.log(styles)
+function Card({cardImg, price, title,  onPlus}) {
 
-
-function Card(props) {
-  const onClickButton = ()=> {
-    alert(props.title)
+  const[liked, setLiked] = React.useState(false)
+   const onFavorite = () => {
+    setLiked(!liked)
   }
+  
+  const[isAdded, setIsAdded]= React.useState(false)
+    const onClickPlus = () => {
+     onPlus({cardImg, price, title});
+      setIsAdded (!isAdded)
+}
+
     return(
 <div className = {styles.card} >
   <div className = {styles.favorite}>
-    <img src = "/img/heartUnlike.svg"/>
+    <img onClick = {onFavorite} src = {liked ?"/img/heartlike.svg" :"/img/heartUnlike.svg"  }/>
   </div>
-<img  width = {133} height = {112}src ={props.cardImg} alt = "2"/>
-<h5>{props.title}</h5>
-  <div  className = "d-flex justify-between align-center">
-    <div  className = "d-flex flex-column"> 
-       <span>Цена :</span>
-    <b>{props.price} руб.</b>
+<img  width = {145} height = {112}src ={cardImg} alt = "2"/>
+  <h5>{title}</h5>
+<div  className = "d-flex justify-between align-center">
+   <div  className = "d-flex flex-column"> 
+     <span>Цена :</span>
+        <b>{price} руб.</b>
     </div>
-        <button className = "button" onClick ={()=> {alert(props.price)}}>
-        <img width = {11} height = {11} src = "/img/plus.png" alt = "Plus"/>
-      </button>
+        <img className={styles.plus} 
+         onClick ={onClickPlus} 
+         src = {isAdded ? "/img/Group 95.svg":"/img/plusimg.png" }
+         alt = "Plus"/>
      </div>
     </div>
     )
+  
 }
 
 

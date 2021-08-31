@@ -1,29 +1,32 @@
 import Header from "./components/Header";
 import Card from "./components/Card/Card";
 import Drawer from "./components/Drawer";
-
-const arrCards = [
-   {title:"Мужские Кроссовки Nike Blazer Mid Suede",
-    price: 12999, 
-    cardImg:"/img/sneakers/1.jpg"},
-   {title:"Мужские Кроссовки Nike Air Max 270",
-    price: 15600, 
-    cardImg:"/img/sneakers/2.jpg"},
-   {title:"Мужские Кроссовки Under Armour Curry 8",
-    price: 8490, 
-    cardImg:"/img/sneakers/3.jpg"},
-   {title:"Кроссовки Puma X Aka Boku Future Rider",
-    price:9690, 
-    cardImg:"/img/sneakers/4.jpg"},
- 
-]
+import React from "react";
 
 function App() {
+
+  const [items, setItems] = React.useState([])
+  const [onDrawerAdd, setOnDrawerAdd] = React.useState([])
+  const [drawerOpened, setDrawerOpened] = React.useState(false)
+  
+React.useEffect(() => {
+  fetch('https://612bde9dab461c00178b5bb9.mockapi.io/items').then(response => {
+    return response.json()
+      }).then ((json) => {
+      setItems(json)
+       })
+},[])
+
+const onClickAddToCart =(obj) => {
+ setOnDrawerAdd(prev =>([...onDrawerAdd, obj]))
+}
+console.log(onDrawerAdd)
   return (
+   
     <div className="wrapper align-center clear">
-      
-     <Drawer/>
-      <Header text={'Магазин лучших кроссовок'}/>
+     {drawerOpened ? <Drawer items = {onDrawerAdd} onClickOpen = {() => {setDrawerOpened ( false)}} /> : null} 
+   
+      <Header addDrawer = {() => {setDrawerOpened  (true)}} text={'Магазин лучших кроссовок'}/>
     <div className = "content p-40">
       <div className= "d-flex justify-between  align-center mb-40" >
         <h1 className = "cross">Все кроссовки</h1>
@@ -34,10 +37,14 @@ function App() {
       </div>
       
       
-      <div className = 'd-flex justify-between align-center'>
-        {arrCards.map(
-        (obj) => (
-          <Card title= {obj.title} price = {obj.price} cardImg = {obj.cardImg}/>
+      <div className = 'd-flex  flex-wrap'>
+        {items.map(
+        (item) => (
+          <Card title= {item.title}
+           price = {item.price} 
+           cardImg = {item.cardImg}
+           onPlus = {onClickAddToCart}
+           onFavorite = { ()=> {console.log('make favorite')}}/>
 
         ))}
       </div>
