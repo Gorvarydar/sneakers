@@ -1,8 +1,10 @@
 import Header from "./components/Header";
-import Card from "./components/Card/Card";
 import Drawer from "./components/Drawer";
 import React from "react";
 import axios from "axios";
+import {Route} from "react-router-dom"
+import Home from "./pages/Home";
+import Favorites from "./pages/Favorites";
 
 function App() {
 
@@ -13,7 +15,6 @@ function App() {
   const [onFavorite, setOnFavorite] = React.useState([])
 
  
-  
   const onInputChanged=(event)=> [
     
     setInputChanged(event.target.value)
@@ -29,6 +30,10 @@ React.useEffect(() => {
     setItems(response.data)
   })
 
+  axios.get('https://612bde9dab461c00178b5bb9.mockapi.io/favorites').then((response) => {
+    setOnFavorite(response.data)
+  })
+
   axios.get('https://612bde9dab461c00178b5bb9.mockapi.io/drawer').then((response) => {
     setOnDrawerAdd(response.data)
   })
@@ -39,10 +44,19 @@ const onClickAddToCart =(obj) => {
   setOnDrawerAdd(prev =>([...onDrawerAdd, obj]))
 }
 
-const onAddToFavorite = (obj) => {
-  axios.post('https://612bde9dab461c00178b5bb9.mockapi.io/favorites',obj)
-    setOnFavorite(prev =>([...onFavorite, obj]))
-  
+const onAddToFavorite = async(obj) =>{
+ try {
+   if(onFavorite.find(favObj => favObj.id === obj.id)) {
+    axios.delete(`https://612bde9dab461c00178b5bb9.mockapi.io/favorites/${obj.id}`);
+   
+  }else {
+    const {data} = await axios.post('https://612bde9dab461c00178b5bb9.mockapi.io/favorites',obj);
+      
+    setOnFavorite(prev =>([...prev, data]))
+  }
+ } catch {
+   alert("Не удалось добавить в избранное")
+ }
 }
 
 const removeDrawerItem = (id) => {
@@ -57,7 +71,24 @@ const removeDrawerItem = (id) => {
      {drawerOpened ? <Drawer items = {onDrawerAdd}  onRemove = {removeDrawerItem} onClickOpen = {() => {setDrawerOpened ( false)}} /> : null} 
    
       <Header addDrawer = {() => {setDrawerOpened  (true)}} text={'Магазин лучших кроссовок'} />
-    <div className = "content p-40"> 
+
+      <Route path= "/" exact>
+        <Home 
+        items = {items}
+        inputChanged = {inputChanged}
+        onInputChanged = {onInputChanged}
+        setInputChanged = {setInputChanged}
+        onClickAddToCart = {onClickAddToCart}
+        onAddToFavorite = {onAddToFavorite}
+        />
+      </Route>
+
+      <Route path ="/favorites" exact>
+        <Favorites  items = {onFavorite} onAddToFavorite = {onAddToFavorite}/>
+      </Route>
+
+      
+    {/* <div className = "content p-40"> 
       <div className= "d-flex justify-between  align-center mb-40" >
         <h1 className = "cross">{inputChanged ? `Поиск по запросу: "${inputChanged}"` : "Все кроссовки"}</h1>
         <div className = 'search d-flex align-center justy' >
@@ -66,6 +97,8 @@ const removeDrawerItem = (id) => {
         {inputChanged && <img onClick = {() => {setInputChanged("")}} className =  "clear-s cu-p " id = 'but'  src = "/img/btn-remove.svg"alt = "removeSearch"/>}
         </div>
       </div>
+      <Route path="/test"><h1>"LOGO"
+        </h1><img src = "./img/newCart.png" alt= "tectpage"/>"some text for test"</Route>
       
       
       <div className = 'itemsPage d-flex  flex-wrap'>
@@ -81,7 +114,7 @@ const removeDrawerItem = (id) => {
            onAddFavorite = {(obj)=> onAddToFavorite(obj)}/>
         ))}
       </div>
-    </div>
+    </div> */}
    </div>
   );
 }

@@ -1,24 +1,31 @@
 import React from "react"
+import {Link} from "react-router-dom"
 
 function Header(props) {
 
     return (
-      <header className='d-flex justify-between  align-center p-40 clear'>
+      <header className=' header d-flex justify-between  align-center p-40 clear'>
       <div className = "d-flex align-center ">
-       <img widht = {100} height ={100}src='/img/logo6.jpg'alt = 'logoImg'/>
+        <Link to ="/">
+          <img widht = {100} height ={100}src='/img/logo6.jpg'alt = 'logoImg'/>
+        </Link>
+       
         <div className = "headerInfo">
           <h3 className ="text-uppercase"> Turbo Sneackers </h3>
           <p>{props.text} </p>  
       </div>     
         </div>
-        <div className = "d-flex align-center justify-between">
+        <div className = "leftCorner d-flex align-center justify-between">
           <ul className = "d-flex  align-start">
           <li className = " mr-30 d-flex" >
           <img className = "d-flex align-center justify-between cu-p" width= {18} height = {18} src = '/img/drawerCard.png' id = 'card'  alt ='cartImg' onClick = {props.addDrawer}/>
           <span className = "align-center ">1205 руб.</span>
           </li>
           <li className = "button mr-30 ">
-          <img width= {18} height = {18} src = '/img/favorite.png' alt = "Favorite"/>
+            <Link to= "/favorites" exact>
+              <img className = "d-flex align-center justify-between"width= {18} height = {18} src = '/img/favorite.png' alt = "Favorite"/>
+            </Link>
+         
           </li>
           <li className = " button mr-30 ">
           <img width= {18} height = {18} src = '/img/Union.png' alt = "User"/>

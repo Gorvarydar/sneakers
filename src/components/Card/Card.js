@@ -1,19 +1,17 @@
 import styles from "./Card.module.scss"
 import React from 'react'
 
+function Card({id, cardImg, price, title,  onPlus, onAddFavorite, favorited = false}) {
 
-
-function Card({cardImg, price, title,  onPlus, onAddFavorite}) {
-
-  const[liked, setLiked] = React.useState(false)
+  const[liked, setLiked] = React.useState(favorited)
    const onFavorite = () => {
-    onAddFavorite({cardImg, price, title})
+    onAddFavorite({id, cardImg, price, title})
     setLiked(!liked)
   }
   
   const[isAdded, setIsAdded]= React.useState(false)
     const onClickPlus = () => {
-     onPlus({cardImg, price, title});
+     onPlus({id, cardImg, price, title});
       setIsAdded (!isAdded)
 }
 
@@ -36,8 +34,6 @@ function Card({cardImg, price, title,  onPlus, onAddFavorite}) {
      </div>
     </div>
     )
-  
 }
-
 
     export default Card

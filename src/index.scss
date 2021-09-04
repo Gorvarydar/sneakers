@@ -49,6 +49,7 @@ header {
   }
 }
 
+
 .search {
   border: 1px solid #F3F3F3;
   border-radius: 10px;
@@ -67,8 +68,6 @@ input {
     margin: 0;
   }
 }
-
-
 
 .button {
   background: #FFFFFF;
@@ -134,8 +133,6 @@ div#itemsPage {
   height: 135px;
   min-height: 135px;
 
-
-
   .cartImage {
     height: 90px;
     width: 90px;
@@ -153,6 +150,16 @@ div#itemsPage {
 
   b {
     font-size: 14px;
+  }
+}
+.leftCorner {
+  ul {
+
+    li {
+      outline:none;
+      border: none;
+      
+    }
   }
 }
 
