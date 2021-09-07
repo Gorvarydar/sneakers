@@ -1,12 +1,37 @@
 import Card from "../components/Card/Card"
-import { Route } from "react-router"
 
-function Home({ items,
-                inputChanged,
-                onInputChanged,
-                setInputChanged,
-                onClickAddToCart,
-                onAddToFavorite}) {
+import React from "react"
+
+
+function Home({ 
+  items,
+  inputChanged,
+  onInputChanged,
+  setInputChanged,
+  onClickAddToCart,
+  onAddToFavorite,
+  onDrawerAdd,
+  isLoading
+   }) {
+    
+     const renderItems = () => {
+       const filterItems =  items.filter((item) => 
+       item.title.toLowerCase().includes(inputChanged.toLowerCase()))
+       
+         return (isLoading  ? [...Array(12)] :filterItems ).map(
+          (item, index) => (
+      
+        <Card 
+         key = {index}
+         onPlus = {(obj)=>onClickAddToCart (obj)}
+         onAddFavorite = {(obj)=> onAddToFavorite(obj)}
+        //  toCartAdded = {isItemAdded(item && item.id)}
+         loading = {isLoading}
+         {...item}/>
+         
+      ))
+     }
+
     return (
         <div className = "content p-40"> 
         <div className= "d-flex justify-between  align-center mb-40" >
@@ -17,23 +42,10 @@ function Home({ items,
           {inputChanged && <img onClick = {() => {setInputChanged("")}} className =  "clear-s cu-p " id = 'but'  src = "/img/btn-remove.svg"alt = "removeSearch"/>}
           </div>
         </div>
-        <Route path="/test"><h1>"LOGO"
-          </h1><img src = "./img/newCart.png" alt= "tectpage"/>"some text for test"</Route>
-        
         
         <div className = 'itemsPage d-flex  flex-wrap'>
-          {items
-          .filter((item) => item.title.toLowerCase().includes(inputChanged.toLowerCase()))
-          .map(
-          (item, index) => (
-            <Card title= {item.title}
-             key = {index}
-             price = {item.price} 
-             cardImg = {item.cardImg}
-             id = {item.id}
-             onPlus = {(obj)=>onClickAddToCart (obj)}
-             onAddFavorite = {(obj)=> onAddToFavorite(obj)}/>
-          ))}
+
+          {renderItems()}
         </div>
       </div>
     )

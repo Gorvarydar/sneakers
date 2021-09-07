@@ -1,46 +1,44 @@
+
 import Card from "../components/Card/Card"
 import { Route } from "react-router"
+import AppContext from "../components/context"
+import React from 'react'
 
-function Favorites({ items,
-  inputChanged,
-  onInputChanged,
-  setInputChanged,
-  onClickAddToCart,
-  onAddToFavorite}) {
+
+function Favorites() {
+  const {onFavorite, onAddToFavorite} = React.useContext(AppContext)
+  console.log(onFavorite)
     return (
+
         <div className = "content p-40"> 
-        <div className= "d-flex justify-between  align-center mb-40" >
-          <h1 className = "cross">{inputChanged ? `Поиск по запросу: "${inputChanged}"` : "Мои закладки "}</h1>
-          <div className = 'search d-flex align-center justy' >
-          <img  width= {18} height = {18} src = '/img/search.png' alt = "Search"/>
-          <input onChange = {onInputChanged} value = {inputChanged} placeholder = 'Поиск...' maxLength = "20"/>
-          {inputChanged && <img onClick = {() => {setInputChanged("")}} className =  "clear-s cu-p " id = 'but'  src = "/img/btn-remove.svg"alt = "removeSearch"/>}
-          </div>
-        </div>
-        <Route path="/test"><h1>"LOGO"
-          </h1><img src = "./img/newCart.png" alt= "tectpage"/>"some text for test"</Route>
-        
+
+        <Route path="/favorites">
+          <h1>Мои закладки</h1>
+          {/* <img src = "./img/newCart.png" alt= "tectpage"/>"some text for test" */}
+          </Route>
           <div className = 'itemsPage d-flex  flex-wrap'>
-          {items
-          .map(
-          (item, index) => (
+          {onFavorite.map((item, index) => (
+
             <Card title= {item.title}
              key = {index}
-             price = {item.price} 
-             cardImg = {item.cardImg}
-             id = {item.id}
-             onPlus = {(obj)=>onClickAddToCart (obj)}
              onAddFavorite = {(obj)=> onAddToFavorite(obj)}
              favorited = {true}
-            
+             {...item}
+
              />
           ))}
+
         </div>
-        
-        
-        <h3>Here will be my favorites </h3>
+
+       
+
       </div>
+
     )
+
 }
 
-export default Favorites
+
+
+
+export default Favorites 
