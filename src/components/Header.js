@@ -11,8 +11,8 @@ function Header(props) {
     return (
       <header className=' header d-flex justify-between  align-center p-40 clear'>
       <div className = "d-flex align-center ">
-        <Link to ="/">
-          <img widht = {120} height ={120}src='/img/logo6.jpg'alt = 'logoImg'/>
+        <Link to ="sneakers">
+          <img widht = {120} height ={120}src='img/logo6.jpg'alt = 'logoImg'/>
         </Link>
        
         <div className = "headerInfo">
@@ -23,18 +23,18 @@ function Header(props) {
         <div className = "leftCorner d-flex align-center justify-between">
           <ul className = "d-flex  align-start">
           <li className = " mr-30 d-flex" >
-          <img className = "d-flex align-center justify-between cu-p" width= {18} height = {18} src = '/img/drawerCard.png' id = 'card'  alt ='cartImg' onClick = {props.addDrawer}/>
+          <img className = "d-flex align-center justify-between cu-p" width= {18} height = {18} src = 'img/drawerCard.png' id = 'card'  alt ='cartImg' onClick = {props.addDrawer}/>
           <span className = "align-center ">{totalPrice} руб.</span>
           </li>
           <li className = "button mr-30 ">
             <Link to= "favorites" exact = "true">
-              <img className = "d-flex align-center justify-between"width= {18} height = {18} src = '/img/favorite.png' alt = "Favorite"/>
+              <img className = "d-flex align-center justify-between"width= {18} height = {18} src = 'img/favorite.png' alt = "Favorite"/>
             </Link>
          
           </li>
           <li className = " button mr-30 ">
             <Link to ="gitorders" exact = "true">
-          <img width= {18} height = {18} src = '/img/Union.png' alt = "User"/>
+          <img width= {18} height = {18} src = 'img/Union.png' alt = "User"/>
           </Link>
           </li>
         </ul> 

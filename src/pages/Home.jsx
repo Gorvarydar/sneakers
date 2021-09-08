@@ -37,9 +37,9 @@ function Home({
         <div className= "d-flex justify-between  align-center mb-40" >
           <h1 className = "cross">{inputChanged ? `Поиск по запросу: "${inputChanged}"` : "Все кроссовки"}</h1>
           <div className = 'search d-flex align-center justy' >
-          <img  width= {18} height = {18} src = '/img/search.png' alt = "Search"/>
+          <img  width= {18} height = {18} src = 'img/search.png' alt = "Search"/>
           <input onChange = {onInputChanged} value = {inputChanged} placeholder = 'Поиск...' maxLength = "20"/>
-          {inputChanged && <img onClick = {() => {setInputChanged("")}} className =  "clear-s cu-p " id = 'but'  src = "/img/btn-remove.svg"alt = "removeSearch"/>}
+          {inputChanged && <img onClick = {() => {setInputChanged("")}} className =  "clear-s cu-p " id = 'but'  src = "img/btn-remove.svg"alt = "removeSearch"/>}
           </div>
         </div>
         
