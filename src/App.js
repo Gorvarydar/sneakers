@@ -112,7 +112,7 @@ const removeDrawerItem = async(id) => {
    
       <Header addDrawer = {() => {setDrawerOpened  (true)}} text={'Магазин лучших кроссовок'} />
 
-      <Route path= "" exact>
+      <Route path= "https://gorvarydar.github.io/sneakers/orders" exact>
         <Home 
         items = {items}
         inputChanged = {inputChanged}
@@ -125,11 +125,11 @@ const removeDrawerItem = async(id) => {
         />
       </Route>
 
-      <Route path ="favorites" exact>
+      <Route path ="https://gorvarydar.github.io/sneakers/favorites" exact>
         <Favorites />
       </Route>
 
-      <Route path ="orders" exact>
+      <Route path ="https://gorvarydar.github.io/sneakers/orders" exact>
         <Orders/>
       </Route>
  

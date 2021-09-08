@@ -12,7 +12,7 @@ function Favorites() {
 
         <div className = "content p-40"> 
 
-        <Route path="favorites">
+        <Route path="https://gorvarydar.github.io/sneakers/favorites">
           <h1>Мои закладки</h1>
        
           </Route>
