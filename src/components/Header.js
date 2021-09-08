@@ -27,13 +27,13 @@ function Header(props) {
           <span className = "align-center ">{totalPrice} руб.</span>
           </li>
           <li className = "button mr-30 ">
-            <Link to= "/favorites" exact = "true">
+            <Link to= "favorites" exact = "true">
               <img className = "d-flex align-center justify-between"width= {18} height = {18} src = '/img/favorite.png' alt = "Favorite"/>
             </Link>
          
           </li>
           <li className = " button mr-30 ">
-            <Link to ="/orders" exact = "true">
+            <Link to ="gitorders" exact = "true">
           <img width= {18} height = {18} src = '/img/Union.png' alt = "User"/>
           </Link>
           </li>
