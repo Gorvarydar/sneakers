@@ -6,7 +6,6 @@ import axios from "axios"
 import { useCart } from "../hooks/useCart"
 
 
-
 function Drawer({items = [], onClickOpen, onRemove, opened}) {
   const {onDrawerAdd, setOnDrawerAdd, totalPrice} = useCart()
  
@@ -47,7 +46,7 @@ function Drawer({items = [], onClickOpen, onRemove, opened}) {
            <h2 className = "mb-30 d-flex justify-between ">Корзина 
               <img className =  "removeBtn cu-p " id = 'but'
                 onClick ={onClickOpen}
-                src = "/img/btn-remove.svg"
+                src = "img/btn-remove.svg"
                 alt = "remove"/>
          </h2>
       

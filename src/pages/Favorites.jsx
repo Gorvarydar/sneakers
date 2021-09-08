@@ -14,7 +14,7 @@ function Favorites() {
 
         <Route path="favorites">
           <h1>Мои закладки</h1>
-          {/* <img src = "./img/newCart.png" alt= "tectpage"/>"some text for test" */}
+       
           </Route>
           <div className = 'itemsPage d-flex  flex-wrap'>
           {onFavorite.map((item, index) => (

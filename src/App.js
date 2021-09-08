@@ -112,7 +112,7 @@ const removeDrawerItem = async(id) => {
    
       <Header addDrawer = {() => {setDrawerOpened  (true)}} text={'Магазин лучших кроссовок'} />
 
-      <Route path= "sneakers" exact>
+      <Route path= "" exact>
         <Home 
         items = {items}
         inputChanged = {inputChanged}
