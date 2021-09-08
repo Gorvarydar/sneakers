@@ -112,7 +112,7 @@ const removeDrawerItem = async(id) => {
    
       <Header addDrawer = {() => {setDrawerOpened  (true)}} text={'Магазин лучших кроссовок'} />
 
-      <Route path= "orders" exact>
+      <Route path= "" exact>
         <Home 
         items = {items}
         inputChanged = {inputChanged}
@@ -125,11 +125,11 @@ const removeDrawerItem = async(id) => {
         />
       </Route>
 
-      <Route path ="favorites" exact>
+      <Route path ="favorites" >
         <Favorites />
       </Route>
 
-      <Route path ="orders" exact>
+      <Route path = {process.env.PUBLIC_URL + '/orders'} >
         <Orders/>
       </Route>
  

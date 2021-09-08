@@ -33,7 +33,7 @@ function Header(props) {
          
           </li>
           <li className = " button mr-30 ">
-            <Link to ="orders"  >
+            <Link to ={process.env.PUBLIC_URL + '/orders'}  >
           <img width= {18} height = {18} src = "img/Union.png" alt = "User"/>
           </Link>
           </li>
