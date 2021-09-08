@@ -12,7 +12,7 @@ function Header(props) {
       <header className=' header d-flex justify-between  align-center p-40 clear'>
       <div className = "d-flex align-center ">
         <Link to ="/">
-          <img widht = {100} height ={100}src='/img/logo6.jpg'alt = 'logoImg'/>
+          <img widht = {120} height ={120}src='/img/logo6.jpg'alt = 'logoImg'/>
         </Link>
        
         <div className = "headerInfo">

@@ -26,7 +26,7 @@ React.useEffect(() => {
   async function fetchData() 
    {
      try{
-      const {cartResponse, favoriteResponse, itemsResponse} = await Promise.all([
+      const [cartResponse, favoriteResponse, itemsResponse] = await Promise.all([
         axios.get('https://612bde9dab461c00178b5bb9.mockapi.io/drawer'), 
         axios.get('https://612bde9dab461c00178b5bb9.mockapi.io/favorites'), 
         axios.get('https://612bde9dab461c00178b5bb9.mockapi.io/items') ])
@@ -50,18 +50,27 @@ React.useEffect(() => {
 
 const onClickAddToCart = async(obj) => {
   try{
-    if(onDrawerAdd.find((item) => Number(item.id) === Number(obj.id))) {
-      setOnDrawerAdd((prev) => prev.filter((it) =>Number(it.id) !== Number(obj.id)))
-      await axios.delete(`https://612bde9dab461c00178b5bb9.mockapi.io/drawer/${obj.id}`)
+    const findItem = onDrawerAdd.find((item) => Number(item.parentId) === Number(obj.id))
+    if(findItem) {
+      setOnDrawerAdd((prev) => prev.filter((it) =>Number(it.parentId) !== Number(obj.id)))
+      await axios.delete(`https://612bde9dab461c00178b5bb9.mockapi.io/drawer/${findItem.id}`)
   } else {
      setOnDrawerAdd(prev =>([...prev, obj]))
-    await axios.post('https://612bde9dab461c00178b5bb9.mockapi.io/drawer', obj)
+     const {data} = await axios.post('https://612bde9dab461c00178b5bb9.mockapi.io/drawer', obj)
+     setOnDrawerAdd((prev) => prev.map(item => {
+       if(item.parentId === data.parentId) {
+         return {
+          ...item,
+          id: data.id
+         }
+       }
+       return item
+     }))
   }
   } catch(error) {
     alert("Ошибка при добавлении в корзину ;(")
     console.error(error)
   }
-  
 }
 
 const onAddToFavorite = async(obj) =>{
@@ -71,9 +80,8 @@ const onAddToFavorite = async(obj) =>{
    await axios.delete(`https://612bde9dab461c00178b5bb9.mockapi.io/favorites/${obj.id}`);
     
   }else {
-    setOnFavorite(prev =>([...prev, data]))
     const {data} = await axios.post('https://612bde9dab461c00178b5bb9.mockapi.io/favorites',obj); 
-   
+    setOnFavorite(prev =>([...prev, data]))
   }
  } catch(error) {
    alert("Не удалось добавить в избранное")
@@ -84,7 +92,7 @@ const onAddToFavorite = async(obj) =>{
 const removeDrawerItem = async(id) => {
   try{
     axios.delete(`https://612bde9dab461c00178b5bb9.mockapi.io/drawer/${id}`)
-  setOnDrawerAdd((prev) =>(prev.filter((item) => item.id !== id)))
+  setOnDrawerAdd((prev) =>(prev.filter((item) => Number(item.id) !== Number(id))))
   console.log(id)
   } catch(error) {
     alert("Ошибка при удалении товара ;(")
@@ -95,8 +103,8 @@ const removeDrawerItem = async(id) => {
 }
 
   const isItemAdded = (id) => {
-    return onDrawerAdd.some((obj) => Number(obj.id)=== Number(id))
-
+    
+    return onDrawerAdd.some((obj) => Number(obj.parentId)=== Number(id))
   }
   return (
     <AppContext.Provider value = {{items, onFavorite, onClickAddToCart,  onDrawerAdd, isItemAdded, onAddToFavorite, isLoading, setDrawerOpened, setOnDrawerAdd}}>
