@@ -11,7 +11,7 @@ function Header(props) {
     return (
       <header className=' header d-flex justify-between  align-center p-40 clear'>
       <div className = "d-flex align-center ">
-        <Link to = "https://gorvarydar.github.io/sneakers/">
+        <Link to = "">
           <img widht = {120} height ={120}src= "img/logo6.jpg" alt = 'logoImg'/>
         </Link>
        
@@ -27,13 +27,13 @@ function Header(props) {
           <span className = "align-center ">{totalPrice} руб.</span>
           </li>
           <li className = "button mr-30 ">
-            <Link to= "https://gorvarydar.github.io/sneakers/favorites">
+            <Link to= "favorites">
               <img className = "d-flex align-center justify-between"width= {18} height = {18} src = "img/favorite.png" alt = "Favorite"/>
             </Link>
          
           </li>
           <li className = " button mr-30 ">
-            <Link to ="https://gorvarydar.github.io/sneakers/orders"  >
+            <Link to ="orders"  >
           <img width= {18} height = {18} src = "img/Union.png" alt = "User"/>
           </Link>
           </li>

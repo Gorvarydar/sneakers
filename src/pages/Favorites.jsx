@@ -12,9 +12,9 @@ function Favorites() {
 
         <div className = "content p-40"> 
 
-        <Route path="https://gorvarydar.github.io/sneakers/favorites">
+        <Route path="favorites">
           <h1>Мои закладки</h1>
-       
+          
           </Route>
           <div className = 'itemsPage d-flex  flex-wrap'>
           {onFavorite.map((item, index) => (
