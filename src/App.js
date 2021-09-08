@@ -98,8 +98,6 @@ const removeDrawerItem = async(id) => {
     alert("Ошибка при удалении товара ;(")
     console.error(error)
   }
-  
-  
 }
 
   const isItemAdded = (id) => {

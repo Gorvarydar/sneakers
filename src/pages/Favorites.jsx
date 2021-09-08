@@ -12,7 +12,7 @@ function Favorites() {
 
         <div className = "content p-40"> 
 
-        <Route path="/favorites">
+        <Route path="favorites">
           <h1>Мои закладки</h1>
           {/* <img src = "./img/newCart.png" alt= "tectpage"/>"some text for test" */}
           </Route>
