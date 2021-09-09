@@ -94,7 +94,7 @@ function Drawer({items = [], onClickOpen, onRemove, opened}) {
       ):(
         <Info onClickOpen = {onClickOpen} 
         title = {isOrderComplete ?   `Ваш заказ  #${orderId} принят` :"Ваша корзина пуста"}
-        image= {isOrderComplete ? ".img/completeOrder.jpg"  : ".img/cart1.jpg"} 
+        image= {isOrderComplete ? "img/completeOrder.jpg"  : "img/cart1.jpg"} 
         description = {isOrderComplete ? "Ваш заказ в процессе обработки"  : "Чтобы оформить заказ добавьте товар" }/>
 
       )}

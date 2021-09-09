@@ -125,11 +125,11 @@ const removeDrawerItem = async(id) => {
         />
       </Route>
 
-      <Route path ="favorites" >
+      <Route path ="favorites" exact >
         <Favorites />
       </Route>
 
-      <Route path = {process.env.PUBLIC_URL + '/orders'} >
+      <Route path = {process.env.PUBLIC_URL + '/orders'} exact >
         <Orders/>
       </Route>
  
