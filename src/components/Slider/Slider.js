@@ -1,12 +1,9 @@
 import React from "react";
 import styles from './Slider.module.css'
-import React, {useState, useEffect} from "react"
-import d1 from "../../../public/img/slider/d1.jpg"
-import d2 from "../../../public/img/slider/d1.jpg"
-import d3 from "../../../public/img/slider/d1.jpg"
-import d4 from "../../../public/img/slider/d1.jpg"
-
-
+import d1 from './public/img/slider/d1.jpg'
+import d2 from './public/img/slider/d2.jpg'
+import d3 from './public/img/slider/d3.jpg'
+import d4 from './public/img/slider/d4.jpg'
 
     const img = [
         <img key={1} src={d1} />,
@@ -16,9 +13,9 @@ import d4 from "../../../public/img/slider/d1.jpg"
 
     ]
    export function  Slider() {
-        const [activeIndex, setActiveIndex] = useState(0);
+        const [activeIndex, setActiveIndex] = React.useState(0);
 
-        useEffect(() => {
+        React.useEffect(() => {
             const interval = setInterval(()=> {
                 setActiveIndex((current) => {
                     const res = current === img.length - 1 ? 0 : current +1
