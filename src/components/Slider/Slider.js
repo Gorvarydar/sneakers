@@ -1,10 +1,10 @@
 import React from "react";
 import './style.css'
 
-import d1 from './slider/d1.jpg'
-import d2 from './slider/d2.jpg'
-import d3 from './slider/d3.jpg'
-import d4 from './slider/d4.jpg'
+import d1 from './slider/1.jpg'
+import d2 from './slider/2.jpg'
+import d3 from './slider/3.jpg'
+import d4 from './slider/4.jpg'
 
     const img = [
         <img key={1} src={d1} />,
