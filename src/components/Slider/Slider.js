@@ -1,5 +1,5 @@
 import React from "react";
-import './Slider.module.css'
+import './style.css'
 
 import d1 from './slider/d1.jpg'
 import d2 from './slider/d2.jpg'
