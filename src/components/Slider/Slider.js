@@ -7,10 +7,10 @@ import d3 from './slider/3.jpg'
 import d4 from './slider/4.jpg'
 
     const img = [
-        <img key={1} src={d1} />,
-        <img key={2} src={d2} />,
-        <img key={3} src={d3} />,
-        <img key={4} src={d4} />,
+        <img className= "img" key={1} src={d1} />,
+        <img className= "img" key={2} src={d2} />,
+        <img className= "img" key={3} src={d3} />,
+        <img className= "img" key={4} src={d4} />,
     ]
    export function  Slider() {
         const [activeIndex, setActiveIndex] = React.useState(0);
@@ -21,7 +21,7 @@ import d4 from './slider/4.jpg'
                     const res = current === img.length - 1 ? 0 : current +1
                     return res
                 })
-            }, 3000)
+            }, 5000)
 
             return clearInterval()
         }, [])
