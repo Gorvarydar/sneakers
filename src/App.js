@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import AppContext from "./components/context"
 import Orders from "./pages/Orders";
+import Slider from "./components/Slider/Slider"
 
 function App() {
 
@@ -42,7 +43,6 @@ React.useEffect(() => {
       setItems(itemsResponse.data)
      } catch (error) {
        alert('Ошибка при запросе данных ')
-       
      }
   }
   fetchData()
@@ -88,7 +88,6 @@ const onAddToFavorite = async(obj) =>{
    console.error(error)
  }
 }
-
 const removeDrawerItem = async(id) => {
   try{
     axios.delete(`https://612bde9dab461c00178b5bb9.mockapi.io/drawer/${id}`)
@@ -99,9 +98,7 @@ const removeDrawerItem = async(id) => {
     console.error(error)
   }
 }
-
   const isItemAdded = (id) => {
-    
     return onDrawerAdd.some((obj) => Number(obj.parentId)=== Number(id))
   }
   return (
@@ -111,8 +108,9 @@ const removeDrawerItem = async(id) => {
        <Drawer items = {onDrawerAdd}  onRemove = {removeDrawerItem} onClickOpen = {() => {setDrawerOpened ( false)}} opened = {drawerOpened} /> 
    
       <Header addDrawer = {() => {setDrawerOpened  (true)}} text={'Магазин лучших кроссовок'} />
+      <Slider/>
 
-      <Route path= "" exact>
+      <Route exact path= "/" >
         <Home 
         items = {items}
         inputChanged = {inputChanged}
@@ -125,19 +123,15 @@ const removeDrawerItem = async(id) => {
         />
       </Route>
 
-      <Route path ="favorites" exact >
+      <Route exact path ="/favorites" >
         <Favorites />
       </Route>
 
-      <Route path = {process.env.PUBLIC_URL + '/orders'} exact >
+      <Route exact path = "/orders"  >
         <Orders/>
       </Route>
- 
-   
    </div>
     </AppContext.Provider>
-   
-   
   );
 }
 

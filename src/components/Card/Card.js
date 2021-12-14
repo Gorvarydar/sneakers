@@ -37,7 +37,7 @@ function Card({id, cardImg, price, title,  onPlus, onAddFavorite, favorited = fa
           <rect x="0" y="186" rx="3" ry="3" width="87" height="20" />
         </ContentLoader> : <>
          <div className = {styles.favorite}>
-            {onAddFavorite && <img onClick = {onFavorite} src = {(liked) ? "img/heartlike.svg" : "img/heartUnlike.svg"  } alt= 'heartImg'/>}
+            {onAddFavorite && <img onClick = {onFavorite} src = {(liked) ? "img/heartLike.svg" : "img/heartUnlike.svg"  } alt= 'heartImg'/>}
          </div>
         <img  width = {145} height = {112}src ={cardImg} alt = "itemImg"/>
          <h5>{title}</h5>

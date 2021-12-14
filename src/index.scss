@@ -5,10 +5,11 @@
 //   background-color: #e7f6ff;
 //   overflow: hidden;
 // }
-
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Stalinist+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Stalinist+One&display=swap');
 * {
-  font-family: 'Inter', system-ui;
-
+  font-family: 'Architects Daughter', cursive;
 }
 
 .search {
@@ -79,14 +80,9 @@ input {
   height: 32;
   cursor: pointer;
 }
-
-
-
 div#itemsPage {
   overflow:hidden;
 }
-
-
 .removeBtn {
   opacity: 0.8;
   transition: opacity 0.15s ease-in-out;
@@ -96,8 +92,6 @@ div#itemsPage {
     opacity: 1;
   }
 }
-
-
 .cartItem {
   display: flex;
   align-content: inherit;
@@ -129,6 +123,10 @@ div#itemsPage {
   }
 }
 .leftCorner {
+  span {
+    font-size: 20px;
+  }
+
   ul {
 
     li {
@@ -138,7 +136,6 @@ div#itemsPage {
     }
   }
 }
-
 .cartTotalBlock {
   o
   ul {
@@ -151,7 +148,6 @@ div#itemsPage {
     align-items: flex-end;
     margin-bottom: 20px;
 
-
     div {
       flex: 1;
       height: 5px;
@@ -161,7 +157,6 @@ div#itemsPage {
       margin: 0 8px;
     }
   }
-
 
   .greenButon {
     position:relative;
