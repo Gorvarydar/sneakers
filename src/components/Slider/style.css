@@ -18,6 +18,8 @@
     height: 480px;
     transition: all 0.9s;
     border-radius: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .img {
