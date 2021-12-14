@@ -1,16 +1,16 @@
 import React from "react";
-import styles from './Slider.module.css'
-import d1 from './public/img/slider/d1.jpg'
-import d2 from './public/img/slider/d2.jpg'
-import d3 from './public/img/slider/d3.jpg'
-import d4 from './public/img/slider/d4.jpg'
+import './Slider.module.css'
+
+import d1 from './slider/d1.jpg'
+import d2 from './slider/d2.jpg'
+import d3 from './slider/d3.jpg'
+import d4 from './slider/d4.jpg'
 
     const img = [
         <img key={1} src={d1} />,
         <img key={2} src={d2} />,
         <img key={3} src={d3} />,
         <img key={4} src={d4} />,
-
     ]
    export function  Slider() {
         const [activeIndex, setActiveIndex] = React.useState(0);
@@ -31,18 +31,20 @@ import d4 from './public/img/slider/d4.jpg'
        return (
            <div className="slider">
                <div className="slider-img slider-img-prev"
-                    key={prevImgIndex}>
-                   {img[prevImgIndex]}
+                    key={prevIndex}>
+                   {img[prevIndex]}
                </div>
                <div className="slider-img"
                     key={activeIndex}>
                    {img[activeIndex]}
                </div>
                <div className="slider-img slider-img-next"
-                    key={nextImgIndex}>
-                   {img[nextImgIndex]}
+                    key={nextIndex}>
+                   {img[nextIndex]}
                </div>
            </div>
        )
 
 }
+
+export  default Slider

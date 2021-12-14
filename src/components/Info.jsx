@@ -4,10 +4,8 @@ import AppContext from './context'
 
 const Info = ({title, description, image, setOnDrawerAdd}) => {
      const {setDrawerOpened} = React.useContext(AppContext)
-   
-    
+
      return (
-        
         <div>
             <div className = "emptyDrawer d-flex flex-column flex">
                 <div className ="d-flex flex-column justify-between align-center">

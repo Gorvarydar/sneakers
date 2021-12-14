@@ -13,7 +13,7 @@ function Header(props) {
       <div className = "d-flex align-center ">
         
         <Link exact to = "" >
-          <img widht = {120} height ={120}src= "img/logoZ.jpg" alt = 'logoImg'/>
+          <img widht = {120} height ={120} src= "img/logoZ.jpg" alt = 'logoImg'/>
         </Link>
        
         <div className = "headerInfo">

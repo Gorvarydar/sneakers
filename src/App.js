@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import AppContext from "./components/context"
 import Orders from "./pages/Orders";
-import Slider from "./components/Slider/Slider"
+import Slider from './components/Slider/Slider'
 
 function App() {
 
@@ -108,6 +108,7 @@ const removeDrawerItem = async(id) => {
        <Drawer items = {onDrawerAdd}  onRemove = {removeDrawerItem} onClickOpen = {() => {setDrawerOpened ( false)}} opened = {drawerOpened} /> 
    
       <Header addDrawer = {() => {setDrawerOpened  (true)}} text={'Магазин лучших кроссовок'} />
+
       <Slider/>
 
       <Route exact path= "/" >
